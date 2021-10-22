@@ -1,0 +1,12 @@
+{
+  "_template": "gh:unmtransinfo/cookiecutter-unmtransinfo-python",
+  "author": "UNM Translational Informatics Team",
+  "development_status": "Development Status :: 5 - Production/Stable",
+  "email": "datascience.software@salud.unm.edu",
+  "friendly_name": "rafm",
+  "github_user": "unmtransinfo",
+  "license": "MIT",
+  "package_name": "rafm",
+  "project_name": "rafm",
+  "version": "0.0.1"
+}
