@@ -1,19 +1,18 @@
 # -*- coding: utf-8 -*-
 """Command-line interface and logging configuration."""
 # standard-library imports
-from importlib import metadata
+
 from typing import Optional
 
 import typer
 
+from . import VERSION
 from .common import APP
-from .common import NAME
 from .common import STATE
 from .plddt import plddt_truncate
 
 # global constants
 unused_commands = (plddt_truncate,)
-VERSION: str = metadata.version(NAME)
 click_object = typer.main.get_command(APP)  # noqa: F841
 
 def version_callback(value: bool) -> None:

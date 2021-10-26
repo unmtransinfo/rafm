@@ -8,3 +8,8 @@ License: MIT
 Copyright © 2021, The University of New Mexico.
 All rights reserved.
 """  # noqa: D301
+
+from importlib import metadata
+
+NAME = "rafm"
+VERSION: str = metadata.version(NAME)

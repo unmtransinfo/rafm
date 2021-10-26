@@ -3,8 +3,6 @@
 # standard library imports
 from __future__ import annotations
 import sys
-from pathlib import Path
-from typing import Any
 from typing import TypedDict
 
 # third-party imports
@@ -13,12 +11,14 @@ import typer
 from loguru import logger
 from statsdict import StatsDict
 
+# module imports
+from . import NAME
 from . import __doc__ as docstring
 
 # global constants
 DEFAULT_STDERR_LOG_LEVEL = "INFO"
 NO_LEVEL_BELOW = 30  # Don't print level for messages below this level
-NAME = "rafm"
+
 
 
 class GlobalState(TypedDict):

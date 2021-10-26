@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "rafm"
-version = "0.2.0"
+version = "0.2.1"
 description = "rafm"
 authors = ["UNM Translational Informatics Team <datascience.software@salud.unm.edu>"]
 license = "MIT"

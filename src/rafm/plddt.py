@@ -15,6 +15,8 @@ from loguru import logger
 from statsdict import Stat
 
 # module imports
+from . import NAME
+from . import VERSION
 from .common import APP
 from .common import STATS
 
@@ -132,6 +134,12 @@ def plddt_truncate(
     stats.sort_values(by=criterion_label, inplace=True, ascending=False)
     stats = stats.reset_index()
     del stats["index"]
+    passing = [False] * len(stats)
+    for row_no, row in stats.iterrows():
+        val = row[criterion_label]
+        if pd.notnull(val) and (val >= criterion):
+            passing[row_no] = True
+    stats[f"{NAME}-{VERSION}"] = passing
     stats.to_csv(stats_file_path, sep="\t")
     total_residues = int(stats['residues_in_pLDDT'].sum())
     STATS["total_residues"] = Stat(total_residues,  desc="number of residues in all models")
