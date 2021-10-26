@@ -9,10 +9,10 @@ import typer
 from .common import APP
 from .common import NAME
 from .common import STATE
-from .plddt import plddt80
+from .plddt import plddt_truncate
 
 # global constants
-unused_commands = (plddt80,)
+unused_commands = (plddt_truncate,)
 VERSION: str = metadata.version(NAME)
 click_object = typer.main.get_command(APP)  # noqa: F841
 

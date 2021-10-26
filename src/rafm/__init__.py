@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""rafm -- reliability of AlphaFold models.
+"""rafm -- reliability of AlphaFold measures.
 
 \b
 For complete help visit https://github.com/unmtransinfo/rafm
