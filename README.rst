@@ -2,39 +2,51 @@
 rafm Reliable AlphaFold Measures
 ================================
 
-|PyPI| |Status| |Python Version| |License|
+. badges-begin
 
-|Read the Docs| |Tests| |Codecov|
-
-|pre-commit| |Black|
+| |PyPi| |Python Version| |Repo| |Downloads| |Dlrate|
+| |License| |Tests| |Coverage| |Codacy| |Issues| |Health|
 
 .. |PyPI| image:: https://img.shields.io/pypi/v/rafm.svg
    :target: https://pypi.org/project/rafm/
-   :alt: PyPI
-.. |Status| image:: https://img.shields.io/pypi/status/rafm.svg
-   :target: https://pypi.org/project/rafm/
-   :alt: Status
+   :alt: PyPI package
 .. |Python Version| image:: https://img.shields.io/pypi/pyversions/rafm
    :target: https://pypi.org/project/rafm
-   :alt: Python Version
-.. |License| image:: https://img.shields.io/pypi/l/rafm
-   :target: https://opensource.org/licenses/MIT
-   :alt: License
-.. |Read the Docs| image:: https://img.shields.io/readthedocs/rafm/latest.svg?label=Read%20the%20Docs
-   :target: https://rafm.readthedocs.io/
-   :alt: Read the documentation at https://rafm.readthedocs.io/
+   :alt: Supported Python Versions
+.. |Repo| image:: https://img.shields.io/github/last-commit/unmtransinfo/rafm
+    :target: https://github.com/unmtransinfo/rafm
+    :alt: GitHub repository
+.. |Downloads| image:: https://pepy.tech/badge/rafm
+     :target: https://pepy.tech/project/rafm
+     :alt: Download stats
+.. |Dlrate| image:: https://img.shields.io/pypi/dm/rafm
+   :target: https://github.com/unmtransinfo/rafm
+   :alt: PYPI download rate
+.. |License| image:: https://img.shields.io/badge/License-BSD%203--Clause-blue.svg
+    :target: https://github.com/unmtransinfo/rafm/blob/master/LICENSE.txt
+    :alt: License terms
 .. |Tests| image:: https://github.com/unmtransinfo/rafm/workflows/Tests/badge.svg
    :target: https://github.com/unmtransinfo/rafm/actions?workflow=Tests
    :alt: Tests
-.. |Codecov| image:: https://codecov.io/gh/unmtransinfo/rafm/branch/main/graph/badge.svg
-   :target: https://codecov.io/gh/unmtransinfo/rafm
-   :alt: Codecov
-.. |pre-commit| image:: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white
-   :target: https://github.com/pre-commit/pre-commit
-   :alt: pre-commit
-.. |Black| image:: https://img.shields.io/badge/code%20style-black-000000.svg
-   :target: https://github.com/psf/black
-   :alt: Black
+.. |Coverage| image:: https://codecov.io/gh/unmtransinfo/rafm/branch/main/graph/badge.svg
+    :target: https://codecov.io/gh/unmtransinfo/rafm
+    :alt: Codecov.io test coverage
+.. |Codacy| image:: https://api.codacy.com/project/badge/Grade/d9c8687d3c544049a293b2faf8919c07
+    :target: https://www.codacy.com/gh/unmtransinfo/rafm?utm_source=github.com&amp;utm_medium=referral&amp;utm_c
+ontent=unmtransinfo/rafm&amp;utm_campaign=Badge_Grade
+    :alt: Codacy.io grade
+.. |Issues| image:: https://img.shields.io/github/issues/unmtransinfo/rafm.svg
+    :target:  https://github.com/unmtransinfo/rafm/issues
+    :alt: Issues reported
+.. |Read the Docs| image:: https://img.shields.io/readthedocs/rafm/latest.svg?label=Read%20the%20Docs
+   :target: https://rafm.readthedocs.io/
+   :alt: Read the documentation at https://rafm.readthedocs.io/
+.. |Health| image:: https://snyk.io/advisor/python/rafm/badge.svg
+  :target: https://snyk.io/advisor/python/rafm
+  :alt: Snyk health
+
+.. badges-end
+
 
 .. image:: https://raw.githubusercontent.com/unmtransinfo/rafm/master/docs/_static/calmodulin.png
    :target: https://raw.githubusercontent.com/unmtransinfo/rafm/master/docs/_static/calmodulin.png
@@ -137,10 +149,22 @@ at least 80% of the sequence looks like this:
 .. image:: https://raw.githubusercontent.com/unmtransinfo/rafm/master/docs/_static/lddt_dist.png
    :target: https://raw.githubusercontent.com/unmtransinfo/rafm/master/docs/_static/lddt_dist.png
    :alt: Distribution of high-scoring, low-scoring, and high-similarity structures
+The markers on the *x*-axis refer to the size of conformational changes observed in
+conformational changes in various protein crystal structures:
+
+* *CALM*
+    Between calcum-bound and calcium-free calmodulin (depicted in the logo image above).
+* *ERK2*
+    Between unphosphorylated and doubly-phosphorylated ERK2 kinase.
+* *HB*
+    Between R- and T-state hemoglobin
+* *MB*
+    Between carbonmonoxy- and deoxy-myoglobin
 
 When applied to set of "dark" genomes with no previous PDB entries, the distributions of
 median *pLDDT* scores with a lower bound of 80 and per-residue *pLDDT* scores looks like
 this:
+
 .. image:: https://raw.githubusercontent.com/unmtransinfo/rafm/master/docs/_static/tdark_dist.png
    :target: https://raw.githubusercontent.com/unmtransinfo/rafm/master/docs/_static/tdark_dist.png
    :alt: Distribution of *pLDDT80* scores and per-residue *pLDDT* scores
