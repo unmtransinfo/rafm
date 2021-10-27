@@ -20,7 +20,6 @@ DEFAULT_STDERR_LOG_LEVEL = "INFO"
 NO_LEVEL_BELOW = 30  # Don't print level for messages below this level
 
 
-
 class GlobalState(TypedDict):
     """Dictionary of global state variables."""
 
@@ -42,4 +41,3 @@ logger.remove()
 logger.add(sys.stderr, level=STATE["log_level"], format=_stderr_format_func)
 APP = typer.Typer(help=docstring, name=NAME)
 STATS = StatsDict(logger=logger, app=APP, module_name=NAME)
-

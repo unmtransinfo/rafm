@@ -9,11 +9,12 @@ import typer
 from . import VERSION
 from .common import APP
 from .common import STATE
-from .plddt import plddt_truncate
+from .plddt import plddt_stats
 
 # global constants
-unused_commands = (plddt_truncate,)
+unused_commands = (plddt_stats,)
 click_object = typer.main.get_command(APP)  # noqa: F841
+
 
 def version_callback(value: bool) -> None:
     """Print version info."""

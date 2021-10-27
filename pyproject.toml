@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "rafm"
-version = "0.2.1"
+version = "0.3.0"
 description = "rafm"
 authors = ["UNM Translational Informatics Team <datascience.software@salud.unm.edu>"]
 license = "MIT"
@@ -116,5 +116,5 @@ addopts = "-x"
 
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
+requires = ["poetry-core>=1.1.0"]
 build-backend = "poetry.core.masonry.api"
