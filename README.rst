@@ -22,7 +22,7 @@ rafm Reliable AlphaFold Measures
 .. |License| image:: https://img.shields.io/badge/License-BSD%203--Clause-blue.svg
     :target: https://github.com/unmtransinfo/rafm/blob/master/LICENSE.txt
     :alt: License terms
-.. |Tests| image:: https://github.com/unmtransin3Kbbd8GqVWbTrPfo/rafm/workflows/Tests/badge.svg
+.. |Tests| image:: https://github.com/unmtransinfo/rafm/workflows/Tests/badge.svg
    :target: https://github.com/unmtransinfo/rafm/actions?workflow=Tests
    :alt: Tests
 .. |Coverage| image:: https://codecov.io/gh/unmtransinfo/rafm/branch/main/graph/badge.svg
