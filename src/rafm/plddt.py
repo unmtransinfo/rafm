@@ -265,6 +265,7 @@ def plddt_plot_dists(
     select_residues = pd.read_csv(res_file_path, sep="\t")
     n_select = len(per_model[per_model[criterion_label] >= criterion])
     n_models = len(per_model)
+    n_select_residues = len(select_residues[select_residues["pLDDT"] >= residue_criterion])
     fig = plt.figure()
     ax = fig.add_subplot(111)
     sns.ecdfplot(data=per_model,
@@ -288,44 +289,31 @@ def plddt_plot_dists(
             rf"$pLDDT$ by residue of {n_select} passing models",
         ]
     )
-    per_model_val = 46
-    print(per_model_val)
-    offset = 9
+    per_model_val = 100 - round(int(n_select*100./n_models), 0)
     hoffset = -1
-    voffset = -50
+    voffset = -10
     ax.vlines(criterion, 0.0, per_model_val/100., color="darkblue")
     ax.text(criterion-hoffset, (per_model_val - voffset)/200.,
-            rf"$pLDDT_{{{lower_bound}{upper_bound_str}}}$",
+            (rf"$pLDDT_{{{lower_bound}{upper_bound_str}}}$" +
+             f"\n = {criterion},\n" +
+             f"{100-per_model_val}% pass\n" +
+             "by model"
+             ),
             color="darkblue")
-    ax.text(criterion-hoffset, (per_model_val - voffset - offset)/200.,
-            f"= {criterion},",
-            color="darkblue")
-    ax.text(criterion-hoffset, (per_model_val- voffset - offset*2)/200.,
-            f"{100-per_model_val}% pass",
-            color="darkblue",)
-    ax.text(criterion-hoffset, (per_model_val- voffset - offset*3)/200.,
-            "by model",
-            color="darkblue")
-    per_residue_val = 37
+    per_residue_val = 100 - int(round(n_select_residues*100./len(select_residues), 0))
     ax.vlines(residue_criterion,
               0.0,
               per_residue_val/100.,
               color="orange")
-    voffset = -20
+    voffset = 10
     ax.text(residue_criterion-hoffset,
             (per_residue_val-voffset)/200.,
-            rf"$pLDDT$",
+            (rf"$pLDDT$" +
+             f"\n= {residue_criterion},\n" +
+             f"{100-per_residue_val}% pass\n" +
+             "by residue"
+             ),
             color="orange")
-    ax.text(residue_criterion-hoffset,
-            (per_residue_val-voffset-offset)/200.,
-            f"= {residue_criterion},",
-            color="orange")
-    ax.text(residue_criterion-hoffset, (per_residue_val-voffset-offset*2)/200.,
-            f"{100-per_residue_val}% pass",
-            color="orange")
-    ax.text(residue_criterion-hoffset, (per_residue_val-voffset - offset*3)/200.,
-            "by residue",
-            color="orange")
-    print(f"Saving {fig_file_path}")
+    logger.info(f"Saving {fig_file_path}")
     sns.despine()
     plt.savefig(fig_file_path, dpi=300)

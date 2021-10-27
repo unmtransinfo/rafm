@@ -71,17 +71,20 @@ Usage
     Options:
 
         * *--criterion FLOAT*
-            The cutoff value on truncated pLDDT for possible utility. [default: 91.2]
+            The cutoff value on truncated pLDDT for possible utility.
+            [default: 91.2]
         * *--min-length INTEGER*
             The minimum sequence length for which to calculate truncated stats.
             [default: 20]
         * *--min-count INTEGER*
-            The minimum number of truncated *pLDDT* values for which to calculate stats.
-            [default: 20]
+            The minimum number of truncated *pLDDT* values for which to
+            calculate stats [default: 20]
         * *--lower-bound INTEGER*
-            The *pLDDT* value below which stats will not be calculated. [default: 80]
+            The *pLDDT* value below which stats will not be calculated.
+            [default: 80]
         * *--upper-bound INTEGER*
-            The *pLDDT* value above which stats will not be calculated. [default: 100]
+            The *pLDDT* value above which stats will not be calculated.
+            [default: 100]
         * *--file-stem TEXT*
             Output file name stem. [default: rafm]
 
@@ -131,11 +134,32 @@ Usage
         * *pLDDT*
             pLDDT value for that residue.
 
+* *plddt-plot-dists*
+    Plot the distributions on the bounded pLDDT and residues in
+    models that pass the selection criteria.
+
+    Input Options:
+        * *out-file-type*
+            Plot file extension of a type that *matplotlib* understands,
+            (e.g., 'jpg', 'pdf') [default: png]
+        * *residue-criterion*
+            Per-residue cutoff on usability (for plot only).
+
+    Outputs:
+        When applied to set of "dark" genomes with no previous PDB entries, the
+        distributions of median *pLDDT* scores with a lower bound of 80 and
+        per-residue *pLDDT* scores with a minimum of 80 looks like this:
+
+        .. image:: https://raw.githubusercontent.com/unmtransinfo/rafm/master/docs/_static/tdark_dist.png
+            :target: https://raw.githubusercontent.com/unmtransinfo/rafm/master/docs/_static/tdark_dist.png
+            :alt: Distribution of *pLDDT80* scores and per-residue *pLDDT* scores
+
+
 Statistical Basis
 -----------------
 The default parameters were chosen to select for *LDDT* values of greater
-than 80 on a set of crystal structures obtained since AlphaFold was trained.  The
-distributions of *LDDT* scores for the passing and non-passing sets, along
+than 80 on a set of crystal structures obtained since AlphaFold was trained.
+The distributions of *LDDT* scores for the passing and non-passing sets, along
 with an (overlapping) set of PDB files at 100% sequence identity over
 at least 80% of the sequence looks like this:
 
@@ -143,11 +167,12 @@ at least 80% of the sequence looks like this:
    :target: https://raw.githubusercontent.com/unmtransinfo/rafm/master/docs/_static/lddt_dist.png
    :alt: Distribution of high-scoring, low-scoring, and high-similarity structures
 
-The markers on the *x*-axis refer to the size of conformational changes observed in
-conformational changes in various protein crystal structures:
+The markers on the *x*-axis refer to the size of conformational changes
+observed in conformational changes in various protein crystal structures:
 
 * *CALM*
-    Between calcum-bound and calcium-free calmodulin (depicted in the logo image above).
+    Between calcum-bound and calcium-free calmodulin
+    (depicted in the logo image above).
 * *ERK2*
     Between unphosphorylated and doubly-phosphorylated ERK2 kinase.
 * *HB*
@@ -155,13 +180,7 @@ conformational changes in various protein crystal structures:
 * *MB*
     Between carbonmonoxy- and deoxy-myoglobin
 
-When applied to set of "dark" genomes with no previous PDB entries, the distributions of
-median *pLDDT* scores with a lower bound of 80 and per-residue *pLDDT* scores looks like
-this:
 
-.. image:: https://raw.githubusercontent.com/unmtransinfo/rafm/master/docs/_static/tdark_dist.png
-   :target: https://raw.githubusercontent.com/unmtransinfo/rafm/master/docs/_static/tdark_dist.png
-   :alt: Distribution of *pLDDT80* scores and per-residue *pLDDT* scores
 
 
 Contributing
@@ -188,7 +207,8 @@ please `file an issue`_ along with a detailed description.
 Credits
 -------
 
-This project was generated from the `UNM Translational Informatics Python Cookiecutter`_ template.
+This project was generated from the
+`UNM Translational Informatics Python Cookiecutter`_ template.
 
 *rafm* was written by Joel Berendzen and Jessica Binder.
 
