@@ -1,15 +1,12 @@
 ================================
 rafm Reliable AlphaFold Measures
 ================================
+| |PyPI| |Python Version| |Repo| |Downloads| |Dlrate|
 
-.. badges-begin
-
-| |PyPi| |Python Version| |Repo| |Downloads| |Dlrate|
 | |License| |Tests| |Coverage| |Codacy| |Issues| |Health|
 
 .. |PyPI| image:: https://img.shields.io/pypi/v/rafm.svg
    :target: https://pypi.org/project/rafm/
-   :alt: PyPI package
 .. |Python Version| image:: https://img.shields.io/pypi/pyversions/rafm
    :target: https://pypi.org/project/rafm
    :alt: Supported Python Versions
@@ -25,7 +22,7 @@ rafm Reliable AlphaFold Measures
 .. |License| image:: https://img.shields.io/badge/License-BSD%203--Clause-blue.svg
     :target: https://github.com/unmtransinfo/rafm/blob/master/LICENSE.txt
     :alt: License terms
-.. |Tests| image:: https://github.com/unmtransinfo/rafm/workflows/Tests/badge.svg
+.. |Tests| image:: https://github.com/unmtransin3Kbbd8GqVWbTrPfo/rafm/workflows/Tests/badge.svg
    :target: https://github.com/unmtransinfo/rafm/actions?workflow=Tests
    :alt: Tests
 .. |Coverage| image:: https://codecov.io/gh/unmtransinfo/rafm/branch/main/graph/badge.svg
@@ -44,16 +41,13 @@ rafm Reliable AlphaFold Measures
   :target: https://snyk.io/advisor/python/rafm
   :alt: Snyk health
 
-.. badges-end
-
-
 .. image:: https://raw.githubusercontent.com/unmtransinfo/rafm/master/docs/_static/calmodulin.png
    :target: https://raw.githubusercontent.com/unmtransinfo/rafm/master/docs/_static/calmodulin.png
    :alt: AlphaFold model and two crystal structures of calmodulin
 
 *rafm* computes per-model measures associated with atomic-level accuracy for
-AlphaFold models from *pLDDT* confidence scores.  Outputs are to a tab-separated
-file.
+AlphaFold models from *pLDDT* confidence scores.  Outputs are to a
+tab-separated file.
 
 
 Installation
@@ -148,6 +142,7 @@ at least 80% of the sequence looks like this:
 .. image:: https://raw.githubusercontent.com/unmtransinfo/rafm/master/docs/_static/lddt_dist.png
    :target: https://raw.githubusercontent.com/unmtransinfo/rafm/master/docs/_static/lddt_dist.png
    :alt: Distribution of high-scoring, low-scoring, and high-similarity structures
+
 The markers on the *x*-axis refer to the size of conformational changes observed in
 conformational changes in various protein crystal structures:
 
