@@ -28,7 +28,7 @@ rafm Reliable AlphaFold Measures
 .. |Coverage| image:: https://codecov.io/gh/unmtransinfo/rafm/branch/main/graph/badge.svg
     :target: https://codecov.io/gh/unmtransinfo/rafm
     :alt: Codecov.io test coverage
-.. |Codacy| image:: https://api.codacy.com/project/badge/Grade/d9c8687d3c544049a293b2faf8919c07
+.. |Codacy| image:: https://api.codacy.com/project/badge/Grade/703bc20047ed41bd873901bf596da166
     :target: https://www.codacy.com/gh/unmtransinfo/rafm?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=unmtransinfo/rafm&amp;utm_campaign=Badge_Grade
     :alt: Codacy.io grade
 .. |Issues| image:: https://img.shields.io/github/issues/unmtransinfo/rafm.svg
