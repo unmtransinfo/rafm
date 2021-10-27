@@ -180,7 +180,10 @@ observed in conformational changes in various protein crystal structures:
 * *MB*
     Between carbonmonoxy- and deoxy-myoglobin
 
-
+The value of *LDDT* >= 80 we selected as the minimum value that was likely to
+prove useful for virtual screening.  The per-residue value of *pLDDT* >= 80
+was also chosen as the minimum likely to give the correct side-chain rotamers
+for a surface defined by contacts between two residues.
 
 
 Contributing
