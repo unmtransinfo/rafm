@@ -36,8 +36,8 @@ rafm Reliable AlphaFold Measures
    :target: https://github.com/psf/black
    :alt: Black
 
-.. image:: https://raw.githubusercontent.com/unmtransinfo/rafm/main/docs/_static/calmodulin.png
-   :target: https://raw.githubusercontent.com/unmtransinfo/rafm/main/docs/_static/calmodulin.png
+.. image:: https://raw.githubusercontent.com/unmtransinfo/rafm/master/docs/_static/calmodulin.png
+   :target: https://raw.githubusercontent.com/unmtransinfo/rafm/master/docs/_static/calmodulin.png
    :alt: AlphaFold model and two crystal structures of calmodulin
 
 *rafm* computes per-model measures associated with atomic-level accuracy for
@@ -77,10 +77,10 @@ Usage
             The *pLDDT* value below which stats will not be calculated. [default: 80]
         * *--upper-bound INTEGER*
             The *pLDDT* value above which stats will not be calculated. [default: 100]
-    * *--file-stem TEXT*
-        Output file name stem. [default: rafm]
+        * *--file-stem TEXT*
+            Output file name stem. [default: rafm]
 
-    Outputs (where *NN* is the bounds specifier, default: 80):
+    Output columns (where *NN* is the bounds specifier, default: 80):
 
         * *residues_in_pLDDT*
             The number of residues in the AlphaFold model.
@@ -116,6 +116,7 @@ Usage
     Input options are the same as *plddt-stats*.
 
     Output columns:
+
         * *file*
             Path to the model file.
         * *residue*
@@ -133,15 +134,15 @@ distributions of *LDDT* scores for the passing and non-passing sets, along
 with an (overlapping) set of PDB files at 100% sequence identity over
 at least 80% of the sequence looks like this:
 
-.. image:: https://raw.githubusercontent.com/unmtransinfo/rafm/main/docs/_static/lddt_dist.png
-   :target: https://raw.githubusercontent.com/unmtransinfo/rafm/main/docs/_static/lddt_dist.png
+.. image:: https://raw.githubusercontent.com/unmtransinfo/rafm/master/docs/_static/lddt_dist.png
+   :target: https://raw.githubusercontent.com/unmtransinfo/rafm/master/docs/_static/lddt_dist.png
    :alt: Distribution of high-scoring, low-scoring, and high-similarity structures
 
 When applied to set of "dark" genomes with no previous PDB entries, the distributions of
 median *pLDDT* scores with a lower bound of 80 and per-residue *pLDDT* scores looks like
 this:
-.. image:: https://raw.githubusercontent.com/unmtransinfo/rafm/main/docs/_static/tdark_dist.png
-   :target: https://raw.githubusercontent.com/unmtransinfo/rafm/main/docs/_static/tdark_dist.png
+.. image:: https://raw.githubusercontent.com/unmtransinfo/rafm/master/docs/_static/tdark_dist.png
+   :target: https://raw.githubusercontent.com/unmtransinfo/rafm/master/docs/_static/tdark_dist.png
    :alt: Distribution of *pLDDT80* scores and per-residue *pLDDT* scores
 
 
@@ -170,6 +171,7 @@ Credits
 -------
 
 This project was generated from the `UNM Translational Informatics Python Cookiecutter`_ template.
+
 *rafm* was written by Joel Berendzen and Jessica Binder.
 
 .. _Cookiecutter: https://github.com/audreyr/cookiecutter
