@@ -8,8 +8,10 @@ from typing import Tuple
 
 
 # 3rd-party imports
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+import seaborn as sns
 from loguru import logger
 from statsdict import Stat
 
@@ -34,6 +36,8 @@ DEFAULT_PLDDT_LOWER_BOUND = 80
 DEFAULT_PLDDT_UPPER_BOUND = 100
 DEFAULT_PLDDT_CRITERION = 91.2
 DEFAULT_LDDT_CRITERION = 0.8
+DEFAULT_OUT_FILE_TYPE = "png"
+DEFAULT_RESIDUE_CRITERION = 80
 CRITERION_TYPE = "median"
 MODULE_NAME = __name__.split(".")[0]
 EMPTY_PATH = Path()
@@ -211,6 +215,7 @@ def plddt_select_residues(
     upper_bound: Optional[int] = DEFAULT_PLDDT_UPPER_BOUND,
     file_stem: Optional[str] = MODULE_NAME,
 ) -> None:
+    """Select residues from files matching criterion."""
     stats_file_path = Path(f"{file_stem}_plddt_stats.tsv")
     stats = pd.read_csv(stats_file_path, sep="\t")
     criterion_label = bin_labels(CRITERION_TYPE, lower_bound, upper_bound)
@@ -235,3 +240,92 @@ def plddt_select_residues(
     out_file_path = Path(f"{file_stem}_plddt{lower_bound}_{criterion}.tsv")
     logger.info(f"Writing residue file {out_file_path}")
     df.to_csv(out_file_path, sep="\t")
+
+
+@APP.command()
+@STATS.auto_save_and_report
+def plddt_plot_dists(
+    criterion: Optional[float] = DEFAULT_PLDDT_CRITERION,
+    lower_bound: Optional[int] = DEFAULT_PLDDT_LOWER_BOUND,
+    upper_bound: Optional[int] = DEFAULT_PLDDT_UPPER_BOUND,
+    file_stem: Optional[str] = MODULE_NAME,
+    out_file_type: Optional[str] = DEFAULT_OUT_FILE_TYPE,
+    residue_criterion: Optional[int] = DEFAULT_RESIDUE_CRITERION
+) -> None:
+    """Plot histograms of per-model and per-residue pLDDT distributions."""
+    stats_file_path = Path(f"{file_stem}_plddt_stats.tsv")
+    res_file_path = Path(f"{file_stem}_plddt{lower_bound}_{criterion}.tsv")
+    fig_file_path = Path(f"{file_stem}_dists.{out_file_type}")
+    per_model = pd.read_csv(stats_file_path, sep="\t")
+    per_model = per_model.fillna(0.0)
+    criterion_label = bin_labels(CRITERION_TYPE, lower_bound, upper_bound)
+    x_axis = r"$pLDDT$"
+    plddt_col = bin_labels(CRITERION_TYPE, lower_bound, upper_bound)
+    per_model[x_axis] = per_model[plddt_col]
+    select_residues = pd.read_csv(res_file_path, sep="\t")
+    n_select = len(per_model[per_model[criterion_label] >= criterion])
+    n_models = len(per_model)
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+    sns.ecdfplot(data=per_model,
+                 x=x_axis,
+                 ax=ax,
+                 color="darkblue")
+    sns.ecdfplot(
+        data=select_residues,
+        x="pLDDT",
+        ax=ax,
+        linestyle="dashed",
+        color="orange"
+    )
+    if upper_bound != DEFAULT_PLDDT_UPPER_BOUND:
+        upper_bound_str = f"-{upper_bound}"
+    else:
+        upper_bound_str = ""
+    ax.legend(
+        labels=[
+            rf'$pLDDT_{{{lower_bound}{upper_bound_str}}}$ of {n_models} "{file_stem}" models',
+            rf"$pLDDT$ by residue of {n_select} passing models",
+        ]
+    )
+    per_model_val = 46
+    print(per_model_val)
+    offset = 9
+    hoffset = -1
+    voffset = -50
+    ax.vlines(criterion, 0.0, per_model_val/100., color="darkblue")
+    ax.text(criterion-hoffset, (per_model_val - voffset)/200.,
+            rf"$pLDDT_{{{lower_bound}{upper_bound_str}}}$",
+            color="darkblue")
+    ax.text(criterion-hoffset, (per_model_val - voffset - offset)/200.,
+            f"= {criterion},",
+            color="darkblue")
+    ax.text(criterion-hoffset, (per_model_val- voffset - offset*2)/200.,
+            f"{100-per_model_val}% pass",
+            color="darkblue",)
+    ax.text(criterion-hoffset, (per_model_val- voffset - offset*3)/200.,
+            "by model",
+            color="darkblue")
+    per_residue_val = 37
+    ax.vlines(residue_criterion,
+              0.0,
+              per_residue_val/100.,
+              color="orange")
+    voffset = -20
+    ax.text(residue_criterion-hoffset,
+            (per_residue_val-voffset)/200.,
+            rf"$pLDDT$",
+            color="orange")
+    ax.text(residue_criterion-hoffset,
+            (per_residue_val-voffset-offset)/200.,
+            f"= {residue_criterion},",
+            color="orange")
+    ax.text(residue_criterion-hoffset, (per_residue_val-voffset-offset*2)/200.,
+            f"{100-per_residue_val}% pass",
+            color="orange")
+    ax.text(residue_criterion-hoffset, (per_residue_val-voffset - offset*3)/200.,
+            "by residue",
+            color="orange")
+    print(f"Saving {fig_file_path}")
+    sns.despine()
+    plt.savefig(fig_file_path, dpi=300)
