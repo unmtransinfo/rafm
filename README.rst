@@ -2,7 +2,7 @@
 rafm Reliable AlphaFold Measures
 ================================
 
-. badges-begin
+.. badges-begin
 
 | |PyPi| |Python Version| |Repo| |Downloads| |Dlrate|
 | |License| |Tests| |Coverage| |Codacy| |Issues| |Health|
@@ -32,8 +32,7 @@ rafm Reliable AlphaFold Measures
     :target: https://codecov.io/gh/unmtransinfo/rafm
     :alt: Codecov.io test coverage
 .. |Codacy| image:: https://api.codacy.com/project/badge/Grade/d9c8687d3c544049a293b2faf8919c07
-    :target: https://www.codacy.com/gh/unmtransinfo/rafm?utm_source=github.com&amp;utm_medium=referral&amp;utm_c
-ontent=unmtransinfo/rafm&amp;utm_campaign=Badge_Grade
+    :target: https://www.codacy.com/gh/unmtransinfo/rafm?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=unmtransinfo/rafm&amp;utm_campaign=Badge_Grade
     :alt: Codacy.io grade
 .. |Issues| image:: https://img.shields.io/github/issues/unmtransinfo/rafm.svg
     :target:  https://github.com/unmtransinfo/rafm/issues
