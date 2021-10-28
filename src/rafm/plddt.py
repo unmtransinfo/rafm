@@ -206,7 +206,6 @@ def plddt_stats(
 
 
 @APP.command()
-@STATS.auto_save_and_report
 def plddt_select_residues(
     criterion: Optional[float] = DEFAULT_PLDDT_CRITERION,
     min_length: Optional[int] = DEFAULT_MIN_LENGTH,
@@ -301,10 +300,9 @@ def plddt_plot_dists(
              ),
             color="darkblue")
     per_residue_val = 100 - int(round(n_select_residues*100./len(select_residues), 0))
-    ax.vlines(residue_criterion,
-              0.0,
-              per_residue_val/100.,
-              color="orange")
+    STATS["usable_residues_pct"] = Stat(
+        100 - per_residue_val,
+        desc=f"residues with LDDT > {residue_criterion}")
     voffset = 10
     ax.text(residue_criterion-hoffset,
             (per_residue_val-voffset)/200.,

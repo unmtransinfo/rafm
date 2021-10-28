@@ -45,9 +45,9 @@ rafm Reliable AlphaFold Measures
    :target: https://raw.githubusercontent.com/unmtransinfo/rafm/master/docs/_static/calmodulin.png
    :alt: AlphaFold model and two crystal structures of calmodulin
 
-*rafm* computes per-model measures associated with atomic-level accuracy for
-AlphaFold models from *pLDDT* confidence scores.  Outputs are to a
-tab-separated file.
+*rafm* computes per-model measures such as expected global *LDDT*
+associated with atomic-level accuracy for AlphaFold models from
+*pLDDT* confidence scores.
 
 
 Installation
@@ -154,6 +154,10 @@ Usage
             :target: https://raw.githubusercontent.com/unmtransinfo/rafm/master/docs/_static/tdark_dist.png
             :alt: Distribution of *pLDDT80* scores and per-residue *pLDDT* scores
 
+* *stats*
+    Produce a set of summary stats on results of runs.  See also the global
+    stats file *rafm_stats.json*.
+
 
 Statistical Basis
 -----------------
@@ -183,7 +187,20 @@ observed in conformational changes in various protein crystal structures:
 The value of *LDDT* >= 80 we selected as the minimum value that was likely to
 prove useful for virtual screening.  The per-residue value of *pLDDT* >= 80
 was also chosen as the minimum likely to give the correct side-chain rotamers
-for a surface defined by contacts between two residues.
+for a surface defined by contacts between two residues. A choice of 91.2 as a
+criterion leads to the following confusion matrix versus a set of post-training
+crystal structures:
+
+.. image:: https://raw.githubusercontent.com/unmtransinfo/rafm/master/docs/_static/confusion_matrix.png
+   :target: https://raw.githubusercontent.com/unmtransinfo/rafm/master/docs/_static/confusion_matrix.png
+   :alt: Confusion matrix of AlphaFold models vs. crystal structures
+
+At a correlation coefficient of 0.71, this correlation isn't great, but enough
+to demonstrate a usable sensitivity.  After we fix a few problems with the
+alignments, it may go a bit higher but our feeling is probably not
+more than about 0.8.
+The support will get better, but the criterion on this metrix seems
+unlikely to change.
 
 
 Contributing
